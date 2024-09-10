@@ -24,7 +24,7 @@ SECRET_KEY = '_y2b#-m(nwf8irkpgs)wpg+-e$#_7^xaevp^me4+u4ov+3fyw*'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-# ALLOWED_HOSTS = ['.killercoda.com', 'localhost', '127.0.0.1', '0.0.0.0']
+ALLOWED_HOSTS = ['.killercoda.com', 'localhost', '127.0.0.1', '0.0.0.0']
 CSRF_TRUSTED_ORIGINS = ['https://*.killercoda.com']
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
