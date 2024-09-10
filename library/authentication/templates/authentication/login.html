@@ -1,0 +1,17 @@
+{% extends 'authentication/base.html' %}
+
+{% block content %}
+    <h2>Login</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <div class="form-error">{{ form.non_field_errors }}</div>
+        {% for f in form %}
+        <p><label for="{{f.id_for_label}}">{{ f.label }}</label>{{ f }}</p>
+        <div class="form-error">{{ f.errors }}</div>
+        {% endfor %}
+        <button type="submit">Login</button>
+        <hr>
+        <p>Don't have an account? <a href="{% url 'users:register' %}">Register here</a></p>
+        <p>Forgot password? <a href="{% url 'users:password_reset' %}">Reset here</a></p>
+    </form>
+{% endblock %}

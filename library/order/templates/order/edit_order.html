@@ -1,0 +1,18 @@
+{% extends "book/book.html" %}
+
+
+{% block description %}
+{% endblock %}
+{% block count %}
+{% endblock %}
+
+{% block order %}
+
+<h2>{{ title }}</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Edit order</button>
+</form>
+
+{% endblock %}

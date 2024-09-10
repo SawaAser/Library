@@ -1,0 +1,14 @@
+{% extends 'authentication/base.html' %}
+
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+<h2>User Profile</h2>
+    <form method="POST">
+        {% csrf_token %}
+        {% for f in form %}
+        <p><label for="{{f.id_for_label}}">{{ f.label }}</label>{{ f }}</p>
+        {% endfor %}
+        <a href="{% url 'users:profile_edit' %}" class="btn btn-warning">Edit profile</a>
+    </form>
+{% endblock %}

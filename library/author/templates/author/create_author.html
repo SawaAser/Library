@@ -1,0 +1,16 @@
+{% extends 'authentication/base.html' %}
+
+{% block content %}
+<h2>Create New Author</h2>
+<form method="POST">
+    {% csrf_token %}
+    {% csrf_token %}
+        {% for f in form %}
+        <p><label for="{{f.id_for_label}}">{{ f.label }}</label>{{ f }}</p>
+        {% endfor %}
+
+    <button type="submit">Create Author</button>
+</form>
+<a href="{% url 'authors:list_authors' %}">Back to All Authors</a>
+{% endblock %}
+

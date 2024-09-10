@@ -1,0 +1,54 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}My Library{% endblock %}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <nav class="navbar">
+        <a href="{% url 'books:all_books' %}" class="navbar-brand">Library</a>
+        <ul class="navbar-menu">
+            <li><a href="{% url 'home' %}">Home</a></li>
+            {% if user.is_authenticated %}
+                <li><a href="{% url 'orders:orders_by_user_id' user.pk %}">My orders</a></li>
+            {% endif %}
+            {% if user.is_superuser %}
+                <li><a href="{% url 'users:manage_users' %}">Manage Users</a></li>
+            {% endif %}
+            {% if user.is_staff %}
+                <li><a href="{% url 'orders:list_orders' %}">All Orders</a></li>
+            {% endif %}
+            {% if user.is_staff %}
+                <li><a href="{% url 'authors:list_authors' %}">All Authors</a></li>
+            {% endif %}
+            {% if user.is_staff %}
+                <li><a href="{% url 'books:all_genres' %}">All Genres</a></li>
+            {% endif %}
+            {% if user.is_staff %}
+                <li><a href="{% url 'books:add_book' %}">Add Book</a></li>
+            {% endif %}
+        </ul>
+        <div class="user-info">
+            {% if user.is_authenticated %}
+            <i class="fas fa-user"></i> <a href="{% url 'users:profile' %}">{{ user.email }}</a>
+                <span class="separator">|</span>
+                <a href="{% url 'users:logout' %}">Logout</a>
+            {% else %}
+                <a href="{% url 'users:login' %}">Login</a>
+                <span class="separator">|</span>
+                <a href="{% url 'users:register' %}">Register</a>
+            {% endif %}
+        </div>
+    </nav>
+    <div class="content">
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+</html>
+

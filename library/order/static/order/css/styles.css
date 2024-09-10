@@ -1,0 +1,242 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+a {
+    color: #ffffff  ;
+}
+
+header {
+    background: #35424a;
+    color: #ffffff;
+    padding: 10px 0;
+    text-align: center;
+}
+
+.main-container {
+    display: flex;
+    padding: 20px;
+}
+
+.orders-container {
+    flex: 1;
+    background: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.orders-container h2 {
+    margin-top: 0;
+    color: #35424a;
+}
+
+.orders-container ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.orders-container li {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+    margin-bottom: 10px;
+}
+
+.orders-container img {
+    max-width: 100px;
+    height: auto;
+    border-radius: 5px;
+    margin-right: 15px;
+}
+
+.orders-container .order-info {
+    display: flex;
+    align-items: center;
+    flex: 1;
+}
+
+.orders-container .order-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.orders-container .order-details span {
+    display: inline-block;
+    margin-right: 20px; /* Adjust space between items as needed */
+}
+
+.orders-container .order-details strong {
+    margin-right: 5px;
+}
+
+.orders-container .no-orders {
+    color: #777;
+}
+
+
+
+.button_ {
+    display: inline-block;
+    padding: 8px 15px; /* Smaller padding for a smaller button */
+    background: #b3d7ff; /* Lighter blue background */
+    color: #333; /* Darker text color for contrast */
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: center;
+    margin-right: 10px; /* Space between buttons when in a row */
+    transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+.button-close {
+    background: #ff4d4d; /* Red background for the close button */
+    color: #ffffff; /* White text color */
+}
+
+.button_:hover {
+    background: #99cfff; /* Slightly darker blue on hover */
+    color: #000; /* Darker text on hover */
+    transform: scale(1.05);
+}
+
+.button-container {
+    display: flex;
+    gap: 10px; /* Space between buttons */
+    flex-wrap: wrap; /* Allow wrapping to the next line if needed */
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+header {
+    background: #35424a;
+    color: #ffffff;
+    padding: 10px 0;
+    text-align: center;
+}
+
+.main-container {
+    display: flex;
+    padding: 20px;
+}
+
+.orders-container {
+    flex: 1;
+    background: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.orders-container h2 {
+    margin-top: 0;
+    color: #35424a;
+}
+
+.orders-container ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.orders-container li {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+    margin-bottom: 10px;
+}
+
+.orders-container img {
+    max-width: 100px;
+    height: auto;
+    border-radius: 5px;
+    margin-right: 15px;
+}
+
+.orders-container .order-info {
+    display: flex;
+    align-items: center;
+    flex: 1;
+}
+
+.orders-container .order-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.orders-container .order-details span {
+    display: inline-block;
+    margin-right: 20px; /* Adjust space between items as needed */
+}
+
+.orders-container .order-details strong {
+    margin-right: 5px;
+}
+
+.orders-container .no-orders {
+    color: #777;
+}
+
+
+
+.button_ {
+    display: inline-block;
+    padding: 8px 15px; /* Smaller padding for a smaller button */
+    background: #b3d7ff; /* Lighter blue background */
+    color: #333; /* Darker text color for contrast */
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: center;
+    margin-right: 10px; /* Space between buttons when in a row */
+    transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+.button-close {
+    background: #ff4d4d; /* Red background for the close button */
+    color: #ffffff; /* White text color */
+}
+
+.button_:hover {
+    background: #99cfff; /* Slightly darker blue on hover */
+    color: #000; /* Darker text on hover */
+    transform: scale(1.05);
+}
+
+.button-container {
+    display: flex;
+    gap: 10px; /* Space between buttons */
+    flex-wrap: wrap; /* Allow wrapping to the next line if needed */
+}
+
+
+
+.green_back {
+    background-color: #008000; /* Green background */
+    color: #ffffff; /* White text color */
+}
+
+.yellow_back {
+    background-color: #ffc107;
+}
+
+
+.order_is_closed {
+    font-size: 1.5em;
+    color: blue
+}

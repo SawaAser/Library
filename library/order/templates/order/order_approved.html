@@ -1,0 +1,18 @@
+{% extends "book/book.html" %}
+
+
+{% block description %}
+<p><strong>Description:</strong> {{ book.description|linebreaks|truncatewords:20 }}</p>
+
+{% endblock %}
+
+
+
+{% block order %}
+
+
+<h2>Order is approved</h2>
+<a href="{% url 'books:all_books' %}" class="link-order-book">All books</a>
+<a href="{% url 'orders:orders_by_user_id' user.pk %}" class="link-order-book">My orders</a>
+
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends "authentication/base.html" %}
+{% load static %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'order/css/styles.css' %}">
+
+<div class="main-container">
+    <div class="orders-container">
+        <h2>{{ title }}</h2>
+        <h3>Open orders: {{ open_orders }}</h3>
+        <h3>Closed orders: {{ closed_orders }}</h3>
+        <ul>
+            {% for order in orders %}
+                <li>
+                    <div class="order-info">
+                        {% if order.book.image %}
+                            <img src="{{ order.book.image.url }}" alt="Book Image">
+                        {% endif %}
+                        <div class="order-details">
+                            <span><strong>Order ID:</strong> {{ order.id }}</span>
+                            <span><strong>User:</strong> {{ order.user.last_name }} {{ order.user.first_name }}</span>
+                            <span><strong>Book Name:</strong> {{ order.book.name }}</span>
+                            <span><strong>Created At:</strong> {{ order.created_at }}</span>
+                            <span><strong>End At:</strong> {{ order.end_at }}</span>
+                            <span><strong>Plated End At:</strong> {{ order.plated_end_at }}</span>
+                            {% if order.end_at %}<p class="order_is_closed">ORDER IS CLOSED</p>{% endif %}
+                            <div class="button-container">
+                                <p class="button_">
+                                    <a href="{% url 'orders:orders_by_user_id' order.user.pk %}">View User's Orders</a>
+                                </p>
+                                <p class="button_ button-close yellow_back">
+                                    <a href="{% url 'orders:edit_order' order.id %}">Edit the order</a>
+                                </p>
+
+                                <p class="button_ button-close">
+                                    <a href="{% url 'orders:order_bel_by_id' order.id %}">Delete the order</a>
+                                </p>
+                                {% if not order.end_at %}
+                                <p class="button_ button-close green_back">
+                                    <a class="green_back" href="{% url 'orders:order_close_by_id' order.id %}">Close the order</a>
+                                </p>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            {% empty %}
+                <li class="no-orders">No orders available.</li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+{% endblock %}

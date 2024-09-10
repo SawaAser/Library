@@ -1,0 +1,78 @@
+{% extends "authentication/base.html" %}
+{% load static %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'book/css/styles.css' %}">
+
+<header>
+    <h1>{{ title }}</h1>
+</header>
+
+<div class="main-container">
+
+
+    <!--    ФІЛЬТРИ-->
+
+    <aside class="filter-container">
+        <a href="{% url 'book:all_books' %}" class="filter-button {% if not request.GET.author and not request.GET.genre %}selected{% endif %}">All</a>
+
+        <div class="filter-group">
+            <p>Genres:</p>
+            {% for genre in genres %}
+                <a href="{% url 'book:all_books' %}?genre={{ genre.id }}" class="filter-button {% if request.GET.genre == genre.id|stringformat:"s" %}selected{% endif %}">
+                    {{ genre.name }}
+                </a>
+            {% endfor %}
+        </div>
+
+        <div class="filter-group">
+            <p>Authors:</p>
+            {% for author in authors %}
+                <a href="{% url 'book:all_books' %}?author={{ author.id }}" class="filter-button {% if request.GET.author == author.id|stringformat:"s" %}selected{% endif %}">
+                    {{ author.name }} {{ author.patronymic }} {{ author.surname }}
+                </a>
+            {% endfor %}
+        </div>
+    </aside>
+
+
+<!--    КНИЖКИ-->
+
+    <div class="books-container">
+        {% for book in books %}
+            <div class="book">
+                {% if book.image %}
+                 <img src="{{ book.image.url }}" alt="Book Image">
+                {% endif %}
+                <h2>{{ book.name }}</h2>
+                <p><strong>Description:</strong> {{ book.description|linebreaks|truncatewords:20 }}</p>
+<!--                <p><strong>Count:</strong> {{ book.count }}</p>-->
+
+                {% if book.authors.exists %}
+                    {% if book.authors.count == 1 %}<p><strong>Author:</strong>{% else %}<p><strong>Authors:</strong>{% endif %}
+                    {% for author in book.authors.all %}
+                        {{ author.name }} {{ author.patronymic }} {{ author.surname }}
+                        {% if not forloop.last %}, {% endif %}
+                    {% endfor %}
+                    </p>
+                {% endif %}
+
+                {% if book.genres.exists %}
+                    {% if book.genres.count == 1 %}<p><strong>Genre:</strong>{% else %}<p><strong>Genres:</strong>{% endif %}
+                    {% for genre in book.genres.all %}
+                        {{ genre.name }}
+                        {% if not forloop.last %}, {% endif %}
+                    {% endfor %}
+                    </p>
+                {% endif %}
+
+                <p class="link-read-book"><a href="{% url 'book:single_book' book.id %}">Look inside</a></p>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

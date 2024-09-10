@@ -1,0 +1,54 @@
+{% extends "authentication/base.html" %}
+
+{% load static %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'book/css/styles.css' %}">
+
+<header>
+    <h1>{{ title }}</h1>
+</header>
+
+<main class="main-container">
+    <form method="post" enctype="multipart/form-data" class="book-form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="submit-button">{{ title }}</button>
+    </form>
+
+    <!-- Image preview section -->
+    <div id="image-preview" class="image-preview">
+        <img id="preview-img" src="#" alt="Image preview" style="display: none; max-width: 200px; height: auto;">
+        <p id="preview-text" style="display: none;">Image preview:</p>
+    </div>
+</main>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const imageInput = document.querySelector('input[name="image"]');
+    const previewImg = document.getElementById('preview-img');
+    const previewText = document.getElementById('preview-text');
+
+    imageInput.addEventListener('change', function() {
+        const file = imageInput.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                previewImg.src = e.target.result;
+                previewImg.style.display = 'block';
+                previewText.style.display = 'block';
+            };
+            reader.readAsDataURL(file);
+        } else {
+            previewImg.style.display = 'none';
+            previewText.style.display = 'none';
+        }
+    });
+});
+</script>
+
+{% endblock %}

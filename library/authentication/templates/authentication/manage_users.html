@@ -1,0 +1,41 @@
+{% extends 'authentication/base.html' %}
+
+{% block content %}
+
+<h2>Manage Users</h2>
+<table>
+    <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Middle Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Active</th>
+            <th>Role</th>
+            <th>Manage</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for user in users %}
+        <tr>
+            <td>{{ user.first_name }}</td>
+            <td>{{ user.middle_name }}</td>
+            <td>{{ user.last_name }}</td>
+            <td><a href="{% url 'users:profile_by_id' user.id %}">{{ user.email }}</a></td>
+            <td>{{ user.is_active }}</td>
+                {% if user.role == 1 %}
+                    <td>Superuser</td>
+                {% endif %}
+                {% if user.role == 0 %}
+                    <td>Visitor</td>
+                {% endif %}
+            <td>
+                <a href="{% url 'users:edit_user' user.id %}" class="btn btn-warning">Edit</a>
+                <a href="{% url 'users:delete_user' user.id %}" class="btn btn-danger">Delete</a>
+                <a href="{% url 'orders:orders_by_user_id' user.id %}" class="btn btn-danger green_back">View User's Orders</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

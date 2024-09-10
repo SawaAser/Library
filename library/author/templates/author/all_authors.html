@@ -1,0 +1,45 @@
+{% extends "authentication/base.html" %}
+{% load static %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'order/css/styles.css' %}">
+
+<a href="{% url 'authors:create_author' %}" class="btn btn-primary green_back">Create New Author</a>
+
+<div class="main-container">
+    <div class="orders-container">
+        <h3>{{ title }}</h3>
+        <ul>
+            {% for author in authors %}
+                <li>
+                    <div class="order-info">
+                        <div class="order-details">
+                            <span><strong>Author ID:</strong> {{ author.pk }}</span>
+                            <span><strong>Name:</strong> {{ author.name }} {{ author.surname }} {{ author.patronymic }}</span>
+                            <span><strong>Books:</strong>
+                                <ul>
+                                    {% for book in author.books.all %}
+                                        <li>{{ forloop.counter }}. {{ book.name }}</li>
+                                    {% empty %}
+                                        <p class="button_ button-close">
+                                            <a href="{% url 'authors:dell_authors' author.id %}">Dell Author</a>
+                                        </p>
+                                    {% endfor %}
+                                    <p><a href="{% url 'authors:edit_author' author.id %}" class="btn btn-warning">Edit author</a></p>
+                                </ul>
+                            </span>
+                        </div>
+                    </div>
+                </li>
+            {% empty %}
+                <li class="no-orders">No authors available.</li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+{% endblock %}

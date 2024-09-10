@@ -1,0 +1,89 @@
+type of users:
+ -> USER
+ -> LIBRARION
+ -> ADMIN
+
+What can do different type of users:
+
+    USER can:
+        - registration         -> FORM
+        - login                -> FORM
+        - edit profile         -> FORM
+        - change password      -> FORM
+        - recovery password    -> FORM
+
+        - see all books
+        - make order           -> FORM
+        - look all own orders
+
+        - logout
+        
+        
+    LIBRARION can plus:
+        - see all genres      
+        - add genre            -> FORM
+        - edit genre           -> FORM
+        - delete genre
+        
+        - see all authors        
+        - add author           -> FORM
+        - edit author          -> FORM
+        - delete author
+
+        - add book             -> FORM
+        - edit book            -> FORM
+        - delete book   
+
+        - see all orders
+        - see order any user 
+        - edit order           -> FORM
+        - close order
+        - delete order
+        
+        
+    ADMIN can everything:
+        - see all users
+        - see any user profile 
+        - edit any user        -> FORM
+        - delete any user
+        
+
+
+
+#____________________
+
+incorect
+user_1@example.com
+123456
+
+correct
+user_4@example.com
+pasword123!@#
+pasword123!@#111
+
+#-------------
+
+librarian_1@example.com
+pasword123!@#
+
+#-------------
+
+root@admin.com
+root123
+
+#____________________
+
+1984
+George 
+Orwell
+
+
+dystopia
+novel
+detective fiction
+
+In 1984, London is a grim city in the totalitarian state of Oceania where Big Brother is always watching you and the Thought Police can practically read your mind. Winston Smith is a man in grave danger for the simple reason that his memory still functions. Drawn into a forbidden love affair, Winston finds the courage to join a secret revolutionary organization called The Brotherhood, dedicated to the destruction of the Party. Together with his beloved Julia, he hazards his life in a deadly match against the powers that be.
+
+Lionel Trilling said of Orwell’s masterpiece “1984 is a profound, terrifying, and wholly fascinating book. It is a fantasy of the political future, and like any such fantasy, serves its author as a magnifying device for an examination of the present.” Though the year 1984 now exists in the past, Orwell’s novel remains an urgent call for the individual willing to speak truth to power.
+
+

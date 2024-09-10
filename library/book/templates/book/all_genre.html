@@ -1,0 +1,36 @@
+{% extends "authentication/base.html" %}
+{% load static %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block content %}
+    <h2>{{ title }}</h2>
+    <a href="{% url 'books:add_genre' %}" class="btn btn-warning green_back">Add Genre</a>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Manage</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for genre in genres %}
+                <tr>
+                    <td>{{ genre.id }}</td>
+                    <td>{{ genre.name }}</td>
+                    <td>
+                        <a href="{% url 'books:edit_genre' genre.id %} " class="btn btn-warning">Edit</a>
+                        <a href="{% url 'books:delete_genre' genre.id %}" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="2">No genres available.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

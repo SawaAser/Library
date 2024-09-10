@@ -1,0 +1,53 @@
+{% extends "authentication/base.html" %}
+
+{% load static %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'book/css/styles.css' %}">
+
+<header>
+    <h1>{{ title }}</h1>
+</header>
+
+<div class="book-detail">
+    <div class="book-detail-container">
+        {% if book.image %}
+        <img src="{{ book.image.url }}" alt="Book Image" class="book-image">
+        {% endif %}
+        <div class="book-info">
+            <h2>{{ book.name }}</h2>
+            {% block description %}<p><strong>Description:</strong> {{ book.description }}</p>{% endblock %}
+            {% block count %}<p><strong>Count:</strong> {{ book.count }}</p>{% endblock %}
+
+            {% if book.authors.exists %}
+                {% if book.authors.count == 1 %}<p><strong>Author:</strong>{% else %}<p><strong>Authors:</strong>{% endif %}
+                {% for author in book.authors.all %}
+                    {{ author.name }} {{ author.patronymic }} {{ author.surname }}
+                    {% if not forloop.last %}, {% endif %}
+                {% endfor %}
+                </p>
+            {% endif %}
+
+            {% if book.genres.exists %}
+                {% if book.genres.count == 1 %}<p><strong>Genre:</strong>{% else %}<p><strong>Genres:</strong>{% endif %}
+                {% for genre in book.genres.all %}
+                    {{ genre.name }}
+                    {% if not forloop.last %}, {% endif %}
+                {% endfor %}
+                </p>
+            {% endif %}
+            {% block order %}
+            <a href="{% url 'orders:create_order' book.pk %}" class="link-order-book ">Order book</a>
+            {% if user.is_staff %}
+                <a href="{% url 'books:edit_book' book.pk %}" class="link-order-book button-close yellow_back">Edit Book</a>
+                <a href="{% url 'books:delete_book' book.pk %}" class="link-order-book button-close">Delete Book</a>
+            {% endif %}
+            {% endblock %}
+        </div>
+    </div>
+</div>
+{% endblock %}
